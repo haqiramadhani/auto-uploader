@@ -2,10 +2,7 @@ require("dotenv").config();
 const puppeteer = require("puppeteer-core");
 const path = require("path");
 const loginToFacebook = require(path.join(__dirname, "src", "loginFacebook"));
-const {
-    textToPersonalFeed,
-    imageToPersonalFeed
-} = require(path.join(__dirname, "src", "publishToPersonalFeed"));
+const publishToPersonalFeed = require(path.join(__dirname, "src", "publishToPersonalFeed"));
 
 const {FB_EMAIL, FB_PASSWORD} = process.env;
 
@@ -19,5 +16,9 @@ const {FB_EMAIL, FB_PASSWORD} = process.env;
     })
     const [page] = await browser.pages();
     await loginToFacebook(page, name, FB_EMAIL, FB_PASSWORD);
-    await imageToPersonalFeed(page, "C:\\Users\\hakir\\Downloads\\Logo Robot Digital Square.png", "Robot Digital!")
+    await publishToPersonalFeed(
+        page,
+        "Robot Digital!",
+        "C:\\Users\\hakir\\Videos\\Cara Membuat Bot Auto Login ke Facebook dengan Node JS.mp4"
+    )
 })()
