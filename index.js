@@ -16,5 +16,8 @@ const {FB_EMAIL, FB_PASSWORD} = process.env;
     })
     const [page] = await browser.pages();
     await loginToFacebook(page, name, FB_EMAIL, FB_PASSWORD);
-    await publishToPersonalStory(page, "Robot Digital!");
+    await publishToPersonalStory(
+        page,
+        "C:\\Users\\hakir\\Downloads\\Logo Robot Digital Square.png"
+    );
 })()
