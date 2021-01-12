@@ -20,6 +20,9 @@ const {FB_EMAIL, FB_PASSWORD} = process.env;
         page,
         "https://www.facebook.com/groups/1105593376220841",
         "Robot Digital!",
-        "C:\\Users\\hakir\\Downloads\\Logo Robot Digital Square.png"
+        [
+            "C:\\Users\\hakir\\Downloads\\Logo Robot Digital Square.png",
+            "C:\\Users\\hakir\\Videos\\Cara Membuat Bot Auto Login ke Facebook dengan Node JS.mp4"
+        ]
     );
 })()

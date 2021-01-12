@@ -1,12 +1,14 @@
-const publishToGroup = async (page, groupUrl, text, image) => {
+const publishToGroup = async (page, groupUrl, text, medias) => {
     await page.waitForNavigation();
     await page.goto(groupUrl);
     await page.waitForSelector("[data-pagelet=\"GroupInlineComposer\"] > div > div > div > div > div > div");
     await page.click("[data-pagelet=\"GroupInlineComposer\"] > div > div > div > div > div > div");
     await page.waitForSelector("[role=\"presentation\"] > div > div > div > div > div > div > [role=\"textbox\"] > div");
-    if (image) {
+    if (medias) {
         const inputUploadHandle = await page.$('form > div > div > div > div > div > div > div > div > div > input');
-        await inputUploadHandle.uploadFile(image);
+        for (const media of medias) {
+            await inputUploadHandle.uploadFile(media);
+        }
         await page.waitForSelector("[aria-label=\"Remove post attachment\"]");
         await page.waitForTimeout(3000);
     }
