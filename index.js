@@ -19,6 +19,7 @@ const {FB_EMAIL, FB_PASSWORD} = process.env;
     await publishToGroup(
         page,
         "https://www.facebook.com/groups/1105593376220841",
-        "Robot Digital!"
+        "Robot Digital!",
+        "C:\\Users\\hakir\\Downloads\\Logo Robot Digital Square.png"
     );
 })()
