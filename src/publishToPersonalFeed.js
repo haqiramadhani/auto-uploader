@@ -1,13 +1,15 @@
-const publishToPersonalFeed = async (page, text, media) => {
+const publishToPersonalFeed = async (page, text, medias) => {
     await page.waitForNavigation();
     await page.waitForSelector("[aria-label=\"Create\"]");
     await page.click("[aria-label=\"Create\"]");
     await page.waitForSelector("[aria-label=\"Create\"][role=\"dialog\"] > div > div > div > div > div > [data-visualcompletion=\"ignore-dynamic\"]");
     await page.click("[aria-label=\"Create\"][role=\"dialog\"] > div > div > div > div > div > [data-visualcompletion=\"ignore-dynamic\"]");
     await page.waitForSelector("div[role=\"presentation\"] > div > div > div > div > div > div > [contenteditable=\"true\"]");
-    if (media) {
+    if (medias) {
         const inputUploadHandle = await page.$('form > div > div > div > div > div > div > div > div > div > input');
-        await inputUploadHandle.uploadFile(media);
+        for (const media of medias) {
+            await inputUploadHandle.uploadFile(media);
+        }
         await page.waitForSelector("[aria-label=\"Remove post attachment\"]");
         await page.waitForTimeout(3000);
     }
